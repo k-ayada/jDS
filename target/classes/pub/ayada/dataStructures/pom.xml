@@ -1,0 +1,28 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>pub.ayada.ds</groupId>
+	<artifactId>dataStructure</artifactId>
+	<version>0.1</version>
+	<name>DataStructure</name>
+	<description>Data Structures</description>
+
+	<properties>
+		<version.mvn.compiler>1.8</version.mvn.compiler>
+		<version.servlet.api>3.1.0</version.servlet.api>
+	</properties>
+
+	<build>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>${version.mvn.compiler}</source>
+					<target>${version.mvn.compiler}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
