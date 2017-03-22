@@ -2,18 +2,18 @@ package pub.ayada.dataStructures.queues;
 
 public class CQueue1to1Blocked<E>  extends CQueue<E> {
 	private static final long serialVersionUID = -6213007202110180843L;
-	public CQueue1to1Blocked(int CQueue_Length) {
-		super(CQueue_Length);
+	public CQueue1to1Blocked(String queueID, int CQueue_Length) {
+		super(queueID,CQueue_Length);
 	}
-	public CQueue1to1Blocked(int CQueue_Length, boolean testing ) {
-		super(CQueue_Length, testing);
+	public CQueue1to1Blocked(String queueID,int CQueue_Length, boolean testing ) {
+		super(queueID,CQueue_Length, testing);
 	}
-	public CQueue1to1Blocked(int CQueue_Length, CQueue<E> clone) {
-		super(CQueue_Length, clone);
-	}
-	public CQueue1to1Blocked(CQueue<E> clone) {
-		super(clone);
-	}
+	public CQueue1to1Blocked(String queueID,int CQueue_Length, CQueue<E> clone) {
+		super(queueID,CQueue_Length, clone);
+	}	
+	public CQueue1to1Blocked(String newQueueID,CQueue<E> clone) {
+		super(newQueueID,clone);
+	}	
 
 	public boolean canAdd() {
 	 // log("canAdd()  -" + (this.arr[this.PushTo] == null));
@@ -23,7 +23,7 @@ public class CQueue1to1Blocked<E>  extends CQueue<E> {
 	}
 	public boolean canGet() {
     // log ("canGet()  -" + !(this.arr[this.PopFrom] == null));
-       return (this.LoadEnded && this.arr[this.PopFrom] != null);
+       return (this.LoadEnded.get() && this.arr[this.PopFrom] != null);
 	}
 	
 	public E peekLast() {
