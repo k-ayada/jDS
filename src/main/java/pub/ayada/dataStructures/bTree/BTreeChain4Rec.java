@@ -20,6 +20,9 @@ public class BTreeChain4Rec<T extends BTreeNode4Rec<Record>> {
 	private Object[][] Key = new Object[3][2];
 	private ArrayList<ColumnMeta> keys = new ArrayList<ColumnMeta>();
 
+	/**
+	 *  The default constructor
+	 */
 	public BTreeChain4Rec() {
 		this.totNodesCnt = 0;
 		this.leftNodesCnt = 0;
@@ -29,6 +32,10 @@ public class BTreeChain4Rec<T extends BTreeNode4Rec<Record>> {
 		this.Nodes.add((T) null);
 	}
 
+	/**
+	 * Constructor accepting SortKey 
+	 * @param sortKeys
+	 */
 	public BTreeChain4Rec(ArrayList<ColumnMeta> sortKeys) {
 		this.totNodesCnt = 0;
 		this.leftNodesCnt = 0;
@@ -39,17 +46,31 @@ public class BTreeChain4Rec<T extends BTreeNode4Rec<Record>> {
 		this.keys.addAll(sortKeys);
 	}
 
+	/** adds the sort key to the list
+	 * 
+	 * @param SortKey Sort keys 
+	 */
 	public void addKeys(ColumnMeta SortKey) {
 		this.keys.add(SortKey);
 	}
 
+	/** add/resets the keylist with the input keys
+	 *   
+	 * @param SortKeys 
+	 */
 	public void setKeys(ArrayList<ColumnMeta> SortKeys) {
 		this.keys.clear();
 		this.keys.addAll(SortKeys);
 	}
 
+	/**
+	 *  
+	 * @param trNode
+	 * @param count
+	 * @return
+	 */
 	@SuppressWarnings("unchecked")
-	public T reach_Mid_Of_Mid_Min(T trNode, int count) {
+	private T reach_Mid_Of_Mid_Min(T trNode, int count) {
 		if (count == 1 && trNode.getParent() == null)
 			return trNode;
 
@@ -62,8 +83,14 @@ public class BTreeChain4Rec<T extends BTreeNode4Rec<Record>> {
 		return trNode;
 	}
 
+	/**
+	 * 
+	 * @param trNode
+	 * @param count
+	 * @return
+	 */
 	@SuppressWarnings("unchecked")
-	public T reach_Mid_Of_Mid_Max(T trNode, int count) {
+	private T reach_Mid_Of_Mid_Max(T trNode, int count) {
 		if (count == 1 && trNode.getChild() == null)
 			return trNode;
 
@@ -75,6 +102,12 @@ public class BTreeChain4Rec<T extends BTreeNode4Rec<Record>> {
 		return trNode;
 	}
 
+	/** Adds the new node to the BTree
+	 *  
+	 * @param newNode
+	 * @return true/false
+	 * @throws Exception
+	 */
 	public boolean addNode(T newNode) throws Exception {
 
 		updateMidIndex();
@@ -356,6 +389,9 @@ public class BTreeChain4Rec<T extends BTreeNode4Rec<Record>> {
 	}
  
 	@SuppressWarnings("unchecked")
+	/** Reports the data in ascending order.
+	 * 
+	 */
 	public void dispInAscendingOrder() {
 
 		int count = 0;
