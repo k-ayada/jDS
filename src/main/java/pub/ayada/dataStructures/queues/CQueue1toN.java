@@ -6,17 +6,21 @@ public class CQueue1toN<E> extends CQueue<E>{
 	private static final long serialVersionUID = -5869870347872720634L;
 	final ReentrantLock lock= new ReentrantLock();
 
-	public CQueue1toN(int CQueue_Length) {
-		super(CQueue_Length);
-	}
 
-	public CQueue1toN(int CQueue_Length, boolean test) {
-		super(CQueue_Length, test);
+	public CQueue1toN(String queueID, int CQueue_Length) {
+		super(queueID,CQueue_Length);
 	}
+	public CQueue1toN(String queueID,int CQueue_Length, boolean testing ) {
+		super(queueID,CQueue_Length, testing);
+	}
+	public CQueue1toN(String queueID,int CQueue_Length, CQueue<E> clone) {
+		super(queueID,CQueue_Length, clone);
+	}	
+	public CQueue1toN(String newQueueID,CQueue<E> clone) {
+		super(newQueueID,clone);
+	}	
+
 	
-	public CQueue1toN(int CQueue_Length, CQueue<E> clone) {
-		super(CQueue_Length, clone);
-	}		
 
     @SuppressWarnings("unchecked")
 	protected synchronized E getNremove() throws Exception {
@@ -26,7 +30,7 @@ public class CQueue1toN<E> extends CQueue<E>{
     		 this.arr[this.PopFrom]=null;
     		//log("Poped.    -");
     		 this.PopFrom = inc(this.PopFrom);
-    		 this.GetCount.incrementAndGet();
+    		 this.ReadCount.incrementAndGet();
     		 return (E) o;
   //  	}
   //  	finally { this.lock.unlock();}
