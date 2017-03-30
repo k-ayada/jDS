@@ -380,8 +380,7 @@ public abstract class CQueue<E> implements Cloneable, Serializable {
 	}
 
 	public String getStats() {
-
-		return " Push Pos:" + String.format("%5d", this.PushTo) + " Pop pos:" + String.format("%5d", this.PopFrom)
+		return String.format("%15d", qID) + " Push Pos:" + String.format("%5d", this.PushTo) + " Pop pos:" + String.format("%5d", this.PopFrom)
 				+ " In Q:" + String.format("%5d", getCount()) + " Load_End:" + this.LoadEnded + " Can_Add:"
 				+ (this.arr[this.PushTo] == null) + " Can_Get:" + !(this.arr[this.PopFrom] == null || getCount() == 0);
 
